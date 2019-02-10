@@ -11,6 +11,7 @@ class Client(models.Model):
    email = models.CharField(max_length=200)
    zoop_id = models.CharField(max_length=200)
    phone = models.CharField(max_length=200)
+   balance = models.FloatField()
 
 class Transaction(models.Model):
    """A model of user's trasactions"""
@@ -30,3 +31,15 @@ class AliveToken(models.Model):
     user = models.ForeignKey("Client")
     beginning_at = models.DateTimeField()
     end_at = models.DateTimeField()
+
+class Input(models.Model):
+   """A model that tracks the user's inputs"""
+   MEHTODS = (
+      (0, 'Boleto'),
+   )
+   client = models.ForeignKey("Client")
+   at = models.DateTimeField()
+   value = models.FloatField()
+   method = models.IntegerField(choices=MEHTODS)
+   paid = models.BooleanField(default=False)
+   paid_at = models.DateTimeField()
