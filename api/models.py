@@ -31,6 +31,7 @@ class AliveToken(models.Model):
     user = models.ForeignKey("Client")
     beginning_at = models.DateTimeField()
     end_at = models.DateTimeField()
+    local = JSONField()
 
 class Input(models.Model):
    """A model that tracks the user's inputs"""
