@@ -25,7 +25,7 @@ SECRET_KEY = 'wylwz&$vdn5zs9uog6#itpy=)lyrage)dd1rd1c72=uynw&a(f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['localhost', '127.0.0.1', '[::1]', 'young-bayou-41740.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'mobitokendb',
         'USER': 'mobitoken',
         'PASSWORD': 'token',
-        'HOST': 'young-bayou-41740.herokuapp.com',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
