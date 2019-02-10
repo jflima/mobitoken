@@ -3,7 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from api import views
 
 urlpatterns = [
-    url('^', views.ClientList.as_view()),
+    # url('^token/', views.obterToken),
     # path('snippets/<int:pk>/', views.SnippetDetail.as_view()),
 ]
 

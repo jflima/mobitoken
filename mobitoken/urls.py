@@ -20,6 +20,7 @@ from django.conf.urls import include
 from django.contrib.auth.models import User
 from api.models import Client
 from rest_framework import routers, serializers, viewsets
+from utils import obterToken, validarToken
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -46,8 +47,9 @@ class ClientViewSet(viewsets.ModelViewSet):
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-
 router.register(r'client', ClientViewSet)
+
+
 
 
 urlpatterns = [
@@ -55,4 +57,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^clients/', include('api.urls', namespace='api')),
+    url(r'^obter-token/', obterToken),
+    url(r'^validar-token/', validarToken),
 ]

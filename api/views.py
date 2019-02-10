@@ -14,6 +14,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 
+
 class ClientList(APIView):
     """
     List all snippets, or create a new snippet.
@@ -32,3 +33,9 @@ class ClientList(APIView):
     
     def get_queryset(self):
         return Client.objects.all()
+
+# @api_view(['GET'])
+# @permission_classes((AllowAny, ))
+# def obterToken(self):
+#     print "MEU TOKEN EH "
+#     return Response({"message": "TOKEN"})
