@@ -21,6 +21,7 @@ from django.contrib.auth.models import User
 from api.models import Client
 from rest_framework import routers, serializers, viewsets
 from utils import obterToken, validarToken
+from payments import pay, get_cash, send_boleto
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -59,4 +60,9 @@ urlpatterns = [
     url(r'^clients/', include('api.urls', namespace='api')),
     url(r'^obter-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', obterToken),
     url(r'^validar-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', validarToken),
+    url(r'^validar-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', validarToken),
+    url(r'^payment/pay/(?P<token>([0-9]+))/(?P<seller>([0-9]+))/(?P<amount>([0-9]+))$', pay),
+    url(r'^payment/get-cash/(?P<seller>([a-z0-9]+))$', get_cash),
+    url(r'^payment/set-cash/(?P<token>([0-9]+))/(?P<amount>([0-9]+))$', send_boleto),
+    
 ]
