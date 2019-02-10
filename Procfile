@@ -1,0 +1,1 @@
+web: gunicorn mobitoken.wsgi --log-file -
