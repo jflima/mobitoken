@@ -141,3 +141,4 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
