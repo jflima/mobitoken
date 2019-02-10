@@ -11,6 +11,6 @@ def obterToken(self):
 
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
-def validarToken(self):
+def validarToken(self, latitude, longitude):
     print "MEU TOKEN EH "
-    return Response({"message": "VALID TOKEN"})
+    return Response({"message": "VALID TOKEN", "latitude": latitude, "longitude": longitude})
