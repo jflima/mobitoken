@@ -1,4 +1,4 @@
-Django==1.11.9
+Django==1.11.18
 django-filter==2.0.0
 djangorestframework==3.9.1
 gunicorn==19.9.0
