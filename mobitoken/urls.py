@@ -20,8 +20,8 @@ from django.conf.urls import include
 from django.contrib.auth.models import User
 from api.models import Client
 from rest_framework import routers, serializers, viewsets
-from utils import obterToken, validarToken
-from payments import pay, get_cash, send_boleto
+from mobitoken.utils import obterToken, validarToken
+from mobitoken.payments import pay, get_cash, send_boleto
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -57,7 +57,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^clients/', include('api.urls', namespace='api')),
+    url(r'^clients/', include(('api.urls', 'api'), namespace='api')),
     url(r'^obter-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', obterToken),
     url(r'^validar-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', validarToken),
     url(r'^validar-token/(?P<latitude>(([0-9]+)\.([0-9]+)),(?P<longitude>(([0-9]+)\.([0-9]+))))$', validarToken),

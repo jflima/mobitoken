@@ -9,8 +9,8 @@ def get_super_seller():
     return Client.objects.get(zoop_id='1f82959f4a4a4516947be3e0f8930ef6')
 
 def transfer(buyer, seller, amount):
-    print buyer.zoop_id
-    print seller.zoop_id
+    print(buyer.zoop_id)
+    print(seller.zoop_id)
     try:
             
         r = post('https://api.zoop.ws/v2/marketplaces/%s/transfers/%s/to/%s'

@@ -15,8 +15,8 @@ class Client(models.Model):
 
 class Transaction(models.Model):
    """A model of user's trasactions"""
-   buyer = models.ForeignKey("Client", related_name='%(class)s_bought')
-   seller = models.ForeignKey("Client", related_name='%(class)s_sold')
+   buyer = models.ForeignKey("Client", related_name='%(class)s_bought', on_delete=models.CASCADE,)
+   seller = models.ForeignKey("Client", related_name='%(class)s_sold', on_delete=models.CASCADE,)
    
    buyer_local = JSONField()
    seller_local = JSONField()
@@ -28,7 +28,7 @@ class Transaction(models.Model):
 class AliveToken(models.Model):
     """A model of token's that can be part of a transaction"""
     token = models.CharField(max_length=6)
-    user = models.ForeignKey("Client")
+    user = models.ForeignKey("Client", on_delete=models.CASCADE,)
     beginning_at = models.DateTimeField()
     end_at = models.DateTimeField()
     local = JSONField()
@@ -38,7 +38,7 @@ class Input(models.Model):
    MEHTODS = (
       (0, 'Boleto'),
    )
-   client = models.ForeignKey("Client")
+   client = models.ForeignKey("Client", on_delete=models.CASCADE,)
    at = models.DateTimeField()
    value = models.FloatField()
    method = models.IntegerField(choices=MEHTODS)
